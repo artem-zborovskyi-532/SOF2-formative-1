@@ -3,7 +3,6 @@ package sof2formativeassessment;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-
 import java.util.List;
 import java.util.ArrayList;
 
@@ -117,20 +116,5 @@ public class T9Pad {
 		}
 
 		return false;
-	}
-
-	public static void main(String[] args) {
-		T9Pad npad = new T9Pad();
-
-		npad.addKey(2, "abc");
-		npad.addKey(3, "def");
-		npad.addKey(4, "ghi");
-		npad.addKey(5, "jkl");
-		npad.addKey(6, "mno");
-		npad.addKey(7, "pqrs");
-		npad.addKey(8, "tuv");
-		npad.addKey(9, "wxyz");
-
-		System.out.println(npad.isTextonym("good", "home"));
 	}
 }

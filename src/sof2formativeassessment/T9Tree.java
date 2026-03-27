@@ -127,7 +127,28 @@ public class T9Tree {
 		}
 	}
 
-	
-	
+	public Set<String> getAllWords() {
+		Set<String> all_words = new HashSet<>();
 
+		all_words.addAll(this.words);
+
+		for (int i = 0; i < 10; i++) {
+			if (this.hasChild(i)) {
+				all_words.addAll(this.children[i].getAllWords());
+			}
+		}
+		
+		return all_words;
+	}
+
+	public static void main(String[] args) {
+		T9Tree tree = new T9Tree();
+
+		tree.add("227", "car");  
+		tree.add("228", "cat");
+		tree.add("228", "bat");
+		tree.add("364", "dog");
+
+		System.out.println(tree.getAllWords());
+	}
 }
