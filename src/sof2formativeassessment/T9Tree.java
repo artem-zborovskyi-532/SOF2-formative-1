@@ -150,26 +150,12 @@ public class T9Tree {
 			throw new IllegalArgumentException("The t9code contains keys that are not part of the numeric pad.");
 		}
 
-		Set<String> sufficient_words = new HashSet<>();
-		sufficient_words.addAll(this.words);
-
 		int c = Character.getNumericValue(t9code.charAt(0));
 
 		if (this.hasChild(c)) {
-			sufficient_words.addAll(this.children[c].getAllWords(t9code.substring(1)));
+			return this.children[c].getAllWords(t9code.substring(1));
 		}
 
-		return sufficient_words;
-	}
-
-	public static void main(String[] args) {
-		T9Tree tree = new T9Tree();
-
-		tree.add("4663", "good");  
-		tree.add("4663", "goods");
-		tree.add("4663", "goodies");
-		tree.add("4663", "home");
-
-		System.out.println(tree.getAllWords("466"));
+		return new HashSet<>();
 	}
 }
