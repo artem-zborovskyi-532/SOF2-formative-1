@@ -76,6 +76,13 @@ public class T9Pad {
 		return pad.keySet();
 	}
 
+	/**
+	 * Returns the numeric key code on the pad that contains the given letter.
+	 *
+	 * @param letter the character to look up on the pad
+	 * @return the key code associated with the given letter
+	 * @throws IllegalArgumentException if the letter is not found on the pad
+	 */
 	public Integer getKeyCode(Character letter) throws IllegalArgumentException {
 		for (Integer key : pad.keySet()) {
 			if (pad.get(key).contains(letter)) {
@@ -86,6 +93,11 @@ public class T9Pad {
 		throw new IllegalArgumentException("Letter not found: " + letter);
 	}
 
+	/**
+	 * Returns a list of all characters available on the pad across all keys.
+	 *
+	 * @return a list containing every character mapped to any key on the pad
+	 */
 	public List<Character> getPadLetters() {
 		List<Character> characters = new ArrayList<>();
 
@@ -98,6 +110,15 @@ public class T9Pad {
 		return characters;
 	}
 
+	/**
+	 * Returns true if two words are textonyms, meaning they produce the same
+	 * sequence of key codes when typed on the pad.
+	 *
+	 * @param word1 the first word to compare
+	 * @param word2 the second word to compare
+	 * @return true if both words map to the same T9 key sequence, false otherwise
+	 * @throws IllegalArgumentException if either word contains a character not found on the pad
+	 */
 	public boolean isTextonym(String word1, String word2) {
 		StringBuilder word1_keys = new StringBuilder("");
 

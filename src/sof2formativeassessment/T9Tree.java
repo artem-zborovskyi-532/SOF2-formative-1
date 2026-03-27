@@ -127,6 +127,11 @@ public class T9Tree {
 		}
 	}
 
+	/**
+	 * Returns all words stored in this node and all of its descendant nodes.
+	 *
+	 * @return a set containing every word in the subtree rooted at this node
+	 */
 	public Set<String> getAllWords() {
 		Set<String> all_words = new HashSet<>();
 
@@ -141,6 +146,17 @@ public class T9Tree {
 		return all_words;
 	}
 
+	/**
+	 * Returns all words in the tree that are associated with the given T9 code.
+	 * Navigates the tree digit by digit following the T9 code, then returns
+	 * all words stored at the resulting node and its descendants.
+	 *
+	 * @param t9code the T9 key sequence used to look up words, must contain
+	 * 		only digits 0-9
+	 * @return a set of all words associated with the given T9 code, or an
+	 * 		empty set if no words are found
+	 * @throws IllegalArgumentException if t9code contains non-numeric characters
+	 */
 	public Set<String> getAllWords(String t9code) {
 		if (t9code.isEmpty()) {
 			return getAllWords();
